@@ -1,0 +1,42 @@
+{
+  "name": "local-font",
+  "author": "subframe7536",
+  "version": "0.1.1",
+  "description": "wrapper of experimental queryLocalFont API",
+  "scripts": {
+    "build": "tsup",
+    "release": "pnpm run build && bumpp --all -p false && npm publish"
+  },
+  "repository": "",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "types.d.ts"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "keywords": [
+    "font",
+    "local font"
+  ],
+  "devDependencies": {
+    "@subframe7536/eslint-config": "^0.2.9",
+    "@types/node": "^20.6.3",
+    "bumpp": "^9.2.0",
+    "eslint": "^8.49.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.4"
+  }
+}
