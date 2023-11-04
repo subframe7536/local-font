@@ -43,9 +43,9 @@ export async function queryFontList(): Promise<FontData[]> {
  * query target local font blob
  * @param postscriptName font postscript name
  */
-export async function queryTargetFontBlob(postscriptName: string): Promise<Blob> {
+export async function queryTargetFontBlob(postscriptName: string): Promise<Blob | null> {
   const [font] = await window.queryLocalFonts({
     postscriptNames: [postscriptName],
   })
-  return await font.blob()
+  return font ? await font.blob() : null
 }

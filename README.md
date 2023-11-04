@@ -15,7 +15,7 @@ import {
 
 if (isSupportQueryLocalFonts()) {
   await queryFontList() // ==> FontData[]
-  await queryTargetFontBlob('ComicSansMS') // ==> Blob
+  await queryTargetFontBlob('ComicSansMS') // ==> Blob | null
 }
 ```
 
