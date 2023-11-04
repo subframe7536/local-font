@@ -1,6 +1,6 @@
 {
   "name": "local-font",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "wrapper of experimental queryLocalFont API",
   "author": "subframe7536",
   "license": "MIT",
