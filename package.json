@@ -5,7 +5,7 @@
   "description": "wrapper of experimental queryLocalFont API",
   "scripts": {
     "build": "tsup",
-    "release": "pnpm run build && bumpp --all -p false && npm publish"
+    "release": "pnpm run build && bumpp --all && npm publish"
   },
   "repository": "",
   "publishConfig": {

@@ -14,12 +14,14 @@ import {
 } from 'local-font'
 
 if (isSupportQueryLocalFonts()) {
-  await queryFontList() // FontData[]
-  await queryTargetFontBlob('ComicSansMS') // Blob
+  await queryFontList() // ==> FontData[]
+  await queryTargetFontBlob('ComicSansMS') // ==> Blob
 }
 ```
 
 ### typescript support
+
+in tsconfig.json:
 
 ```json
 {

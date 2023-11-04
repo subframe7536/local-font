@@ -1,5 +1,28 @@
 /// <reference types="../types.d.ts" />
 
+export interface FontData {
+  /**
+   * the family of the font face
+   */
+  readonly family: string
+  /**
+   * the full name of the font face
+   */
+  readonly fullName: string
+  /**
+   * the PostScript name of the font face
+   */
+  readonly postscriptName: string
+  /**
+   * the style of the font face
+   */
+  readonly style: string
+  /**
+   * get a Promise that fulfills with a Blob containing the raw bytes of the underlying font file
+   */
+  readonly blob: () => Promise<Blob>
+}
+
 /**
  * check if support query local fonts
  */
@@ -10,7 +33,7 @@ export function isSupportQueryLocalFonts() {
 /**
  * query local font list
  *
- * {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts MDN Document}
+ * {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts MDN Reference}
  */
 export async function queryFontList(): Promise<FontData[]> {
   return await window.queryLocalFonts()
@@ -18,12 +41,11 @@ export async function queryFontList(): Promise<FontData[]> {
 
 /**
  * query target local font blob
- *
- * {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts#accessing_low-level_data MDN Example}
+ * @param postscriptName font postscript name
  */
-export async function queryTargetFontBlob(postscriptName: string | string[]): Promise<Blob | Error> {
-  const fonts = await window.queryLocalFonts({
-    postscriptNames: Array.isArray(postscriptName) ? postscriptName : [postscriptName],
+export async function queryTargetFontBlob(postscriptName: string): Promise<Blob> {
+  const [font] = await window.queryLocalFonts({
+    postscriptNames: [postscriptName],
   })
-  return await fonts[0].blob()
+  return await font.blob()
 }
