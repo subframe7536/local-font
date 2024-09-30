@@ -1,6 +1,6 @@
 declare interface Window {
   /**
-   * query local fonts
+   * Query local fonts
    *
    * {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts MDN Reference}
    */
@@ -11,23 +11,23 @@ declare interface Window {
 
 declare interface FontData {
   /**
-   * the family of the font face
+   * The family of the font face
    */
   readonly family: string
   /**
-   * the full name of the font face
+   * The full name of the font face
    */
   readonly fullName: string
   /**
-   * the PostScript name of the font face
+   * The PostScript name of the font face
    */
   readonly postscriptName: string
   /**
-   * the style of the font face
+   * The style of the font face
    */
   readonly style: string
   /**
-   * get a Promise that fulfills with a Blob containing the raw bytes of the underlying font file
+   * Get a Promise that fulfills with a Blob containing the raw bytes of the underlying font file
    */
   readonly blob: () => Promise<Blob>
 }

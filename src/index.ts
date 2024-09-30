@@ -1,5 +1,3 @@
-/// <reference types="../types.d.ts" />
-
 export interface FontData {
   /**
    * the family of the font face
