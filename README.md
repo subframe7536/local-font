@@ -22,7 +22,7 @@ if (isSupportQueryLocalFonts() && (await checkLocalFontPermission()).state === '
   await queryTargetFontBlob('ComicSansMS') // ==> Blob | null
 
   const ctx = document.createElement('canvas').getContext('2d')!
-  isMonospace(data[0].family) // `true` or `false`
+  isMonospace(ctx, data[0].family) // `true` or `false`
   fontWeightLabels[parseFontStyleToWeight(data[0].style)] // Regular
 }
 ```

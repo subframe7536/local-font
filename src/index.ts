@@ -39,8 +39,8 @@ export async function checkLocalFontPermission(): Promise<PermissionStatus> {
  *
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts MDN Reference}
  */
-export async function queryFontList(): Promise<FontData[]> {
-  return await window.queryLocalFonts()
+export async function queryFontList(options?: { postscriptNames: string[] }): Promise<FontData[]> {
+  return window.queryLocalFonts(options)
 }
 
 /**
@@ -48,7 +48,7 @@ export async function queryFontList(): Promise<FontData[]> {
  * @param postscriptName font postscript name
  */
 export async function queryTargetFontBlob(postscriptName: string): Promise<Blob | null> {
-  const [font] = await window.queryLocalFonts({
+  const [font] = await queryFontList({
     postscriptNames: [postscriptName],
   })
   return font ? await font.blob() : null
@@ -63,38 +63,27 @@ export function isMonospace(ctx: CanvasRenderingContext2D, fontName: string): bo
 export function parseFontStyleToWeight(style: string): number {
   style = style.toLowerCase().replace(/[\s\-_]/g, '')
 
-  let face
   switch (true) {
     case style.includes('thin'):
-      face = 100
-      break
+      return 100
     case style.includes('extralight'):
-      face = 200
-      break
+      return 200
     case style.includes('light'):
-      face = 300
-      break
+      return 300
     case style.includes('medium'):
-      face = 500
-      break
+      return 500
     case style.includes('semibold'):
-      face = 600
-      break
+      return 600
     case style.includes('extrabold'):
-      face = 800
-      break
+      return 800
     case style.includes('black'):
     case style.includes('ultrabold'):
-      face = 900
-      break
+      return 900
     case style.includes('bold'):
-      face = 700
-      break
+      return 700
     default:
-      face = 400
+      return 400
   }
-
-  return face
 }
 
 export const fontWeightLabels: Record<number, string> = {
